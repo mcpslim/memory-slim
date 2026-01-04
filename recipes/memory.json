@@ -1,0 +1,86 @@
+{
+  "mcp_name": "memory",
+  "auto_generated": true,
+  "algorithm_version": "v2.1",
+  "rules": {
+    "default_minifier": "first_sentence",
+    "remove_params_description": true
+  },
+  "groups": [
+    {
+      "name": "create",
+      "description": "create operations",
+      "mapping": {
+        "entities": "create_entities",
+        "relations": "create_relations"
+      },
+      "common_schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "entities",
+              "relations"
+            ]
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    },
+    {
+      "name": "delete",
+      "description": "delete operations",
+      "mapping": {
+        "entities": "delete_entities",
+        "observations": "delete_observations",
+        "relations": "delete_relations"
+      },
+      "common_schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "entities",
+              "observations",
+              "relations"
+            ]
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    },
+    {
+      "name": "nodes",
+      "description": "nodes operations",
+      "mapping": {
+        "search": "search_nodes",
+        "open": "open_nodes"
+      },
+      "common_schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "search",
+              "open"
+            ]
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ],
+  "passthrough": [
+    "add_observations",
+    "read_graph"
+  ]
+}

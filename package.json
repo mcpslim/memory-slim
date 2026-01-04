@@ -1,0 +1,37 @@
+{
+  "name": "memory-slim",
+  "version": "2025.11.25",
+  "description": "Slimmed memory MCP - 44% token reduction for AI models",
+  "bin": {
+    "memory-slim": "./index.js"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "gemini",
+    "chatgpt",
+    "memory",
+    "slim",
+    "token-reduction"
+  ],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "recipes/",
+    "index.js",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/palan-k/mcpslim.git",
+    "directory": "packages/memory-slim"
+  },
+  "mcpslim": {
+    "originalPackage": "@modelcontextprotocol/server-memory",
+    "originalVersion": "2025.11.25",
+    "originalTools": 9,
+    "slimTools": 5,
+    "tokenReduction": "44%"
+  }
+}
