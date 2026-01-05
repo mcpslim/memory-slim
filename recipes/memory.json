@@ -60,7 +60,9 @@
           }
         },
         "required": [
-          "action"
+          "action",
+          "entities",
+          "relations"
         ]
       }
     },
@@ -122,7 +124,10 @@
           }
         },
         "required": [
-          "action"
+          "action",
+          "entityNames",
+          "deletions",
+          "relations"
         ]
       }
     },
@@ -154,7 +159,9 @@
           }
         },
         "required": [
-          "action"
+          "action",
+          "query",
+          "names"
         ]
       }
     }
