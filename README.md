@@ -35,20 +35,47 @@ Your AI assistant sees fewer, smarter tools. Every original capability remains a
 > - Schema tokens measured with [tiktoken](https://github.com/openai/tiktoken) (cl100k_base)
 > - Claude Code estimate includes ~570 tokens/tool overhead
 
-## Installation
+## Quick Start
+
+### One-Command Setup (Recommended)
 
 ```bash
-npx memory-slim
+# Claude Desktop - auto-configure
+npx memory-slim --setup claude
+
+# Cursor - auto-configure
+npx memory-slim --setup cursor
+
+# Interactive mode (choose your client)
+npx memory-slim --setup
 ```
 
-No additional setup required. The slim server wraps the original MCP transparently.
+Done! Restart your app to use memory.
 
-## Usage
+### CLI Tools (already have CLI?)
+
+```bash
+# Claude Code
+claude mcp add memory -- npx -y memory-slim
+
+# VS Code (Copilot, Cline, Roo Code)
+code --add-mcp '{"name":"memory","command":"npx","args":["-y","memory-slim"]}'
+```
+
+## Manual Setup
+
+<details>
+<summary>Click to expand manual configuration options</summary>
 
 ### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
 
+| OS | Path |
+|----|------|
+| Windows | `%APPDATA%\Claude\claude_desktop_config.json` |
+| macOS | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+
 ```json
 {
   "mcpServers": {
@@ -58,29 +85,11 @@ Add to your `claude_desktop_config.json`:
     }
   }
 }
-```
-
-### Claude Code (CLI)
-
-```bash
-claude mcp add memory -- npx -y memory-slim
-```
-
-### Gemini CLI
-
-```bash
-gemini mcp add memory -- npx -y memory-slim
-```
-
-### VS Code (Copilot, Cline, Roo Code)
-
-```bash
-code --add-mcp '{"name":"memory","command":"npx","args":["-y","memory-slim"]}'
 ```
 
 ### Cursor
 
-Add to `.cursor/mcp.json`:
+Add to `.cursor/mcp.json` (global) or `<project>/.cursor/mcp.json` (project):
 
 ```json
 {
@@ -92,6 +101,8 @@ Add to `.cursor/mcp.json`:
   }
 }
 ```
+
+</details>
 
 ## How It Works
 
