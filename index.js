@@ -17,7 +17,7 @@ const os = require('os');
 const fs = require('fs');
 const readline = require('readline');
 
-const MCP_NAME = 'memory';
+const MCP_NAME = 'memory-slim';
 const PACKAGE_NAME = 'memory-slim';
 
 // 환경변수 요구사항 (빌드 시 주입)
