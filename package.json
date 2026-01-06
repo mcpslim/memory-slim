@@ -1,7 +1,7 @@
 {
   "name": "memory-slim",
-  "version": "2025.11.25-slim.1",
-  "description": "Slimmed memory MCP - 44% token reduction for AI models",
+  "version": "2025.11.25-slim.1.1",
+  "description": "memory MCP (44% less tokens). Quick setup: npx memory-slim --setup",
   "bin": {
     "memory-slim": "./index.js"
   },
