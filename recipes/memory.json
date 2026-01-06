@@ -9,7 +9,7 @@
   "groups": [
     {
       "name": "create",
-      "description": "Populate knowledge graphs by generating new entities and defining direct relationships between them.",
+      "description": "create operations",
       "mapping": {
         "entities": "create_entities",
         "relations": "create_relations"
@@ -68,7 +68,7 @@
     },
     {
       "name": "delete",
-      "description": "Remove entities, observations, and relations directly from the knowledge graph to refine information.",
+      "description": "delete operations",
       "mapping": {
         "entities": "delete_entities",
         "observations": "delete_observations",
@@ -133,7 +133,7 @@
     },
     {
       "name": "nodes",
-      "description": "Navigate and access information within a knowledge graph by searching or directly opening named nodes.",
+      "description": "nodes operations",
       "mapping": {
         "search": "search_nodes",
         "open": "open_nodes"
@@ -169,7 +169,5 @@
   "passthrough": [
     "add_observations",
     "read_graph"
-  ],
-  "ai_enhanced": true,
-  "enhanced_at": "2026-01-05T07:29:15.906Z"
+  ]
 }
