@@ -234,7 +234,20 @@ if (setupIndex !== -1) {
   // Normal Mode: Run MCP server
   // ============================================
 
-  const binName = os.platform() === 'win32' ? 'mcpslim.exe' : 'mcpslim';
+  // 플랫폼별 바이너리 이름 결정
+  function getBinaryName() {
+    const platform = os.platform();
+    const arch = os.arch();
+    if (platform === 'win32') {
+      return 'mcpslim-windows-x64.exe';
+    } else if (platform === 'darwin') {
+      return arch === 'arm64' ? 'mcpslim-darwin-arm64' : 'mcpslim-darwin-x64';
+    } else {
+      return 'mcpslim-linux-x64';
+    }
+  }
+
+  const binName = getBinaryName();
   const mcpslimBin = path.join(__dirname, 'bin', binName);
   const recipePath = path.join(__dirname, 'recipes', 'memory.json');
 
