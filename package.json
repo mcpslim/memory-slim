@@ -1,6 +1,6 @@
 {
   "name": "memory-slim",
-  "version": "2025.11.25",
+  "version": "2025.11.25-slim.1",
   "description": "Slimmed memory MCP - 44% token reduction for AI models",
   "bin": {
     "memory-slim": "./index.js"
