@@ -117,10 +117,11 @@ async function interactiveSetup() {
     case '3':
       console.log('\nRun this command:\n');
       if (REQUIRED_ENV_VARS.length > 0) {
-        console.log(`  claude mcp add ${MCP_NAME} ${envFlags} -- npx -y ${PACKAGE_NAME}\n`);
+        console.log(`  claude mcp add ${MCP_NAME} -s project ${envFlags} -- npx -y ${PACKAGE_NAME}\n`);
       } else {
-        console.log(`  claude mcp add ${MCP_NAME} -- npx -y ${PACKAGE_NAME}\n`);
+        console.log(`  claude mcp add ${MCP_NAME} -s project -- npx -y ${PACKAGE_NAME}\n`);
       }
+      console.log('  (Windows: use "cmd /c npx" instead of "npx")\n');
       return true;
     case '4':
       console.log('\nRun this command:\n');
@@ -137,11 +138,14 @@ function setupClaudeCode() {
   // 환경변수 플래그 생성
   const envFlags = REQUIRED_ENV_VARS.map(v => `--env ${v}=<YOUR_${v.split('_').pop()}>`).join(' ');
 
-  let cmd = `claude mcp add ${MCP_NAME}`;
+  // Windows에서는 cmd /c wrapper 필요
+  const npxCmd = os.platform() === 'win32' ? 'cmd /c npx' : 'npx';
+
+  let cmd = `claude mcp add ${MCP_NAME} -s project`;
   if (REQUIRED_ENV_VARS.length > 0) {
     cmd += ` ${envFlags}`;
   }
-  cmd += ` -- npx -y ${PACKAGE_NAME}`;
+  cmd += ` -- ${npxCmd} -y ${PACKAGE_NAME}`;
 
   console.log(`\n🔧 Adding ${MCP_NAME} to Claude Code...\n`);
   console.log(`Running: ${cmd}\n`);

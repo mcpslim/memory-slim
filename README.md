@@ -55,8 +55,11 @@ Done! Restart your app to use memory.
 ### CLI Tools (already have CLI?)
 
 ```bash
-# Claude Code
-claude mcp add memory -- npx -y memory-slim
+# Claude Code (creates .mcp.json in project root)
+claude mcp add memory -s project -- npx -y memory-slim
+
+# Windows: use cmd /c wrapper
+claude mcp add memory -s project -- cmd /c npx -y memory-slim
 
 # VS Code (Copilot, Cline, Roo Code)
 code --add-mcp '{"name":"memory","command":"npx","args":["-y","memory-slim"]}'
