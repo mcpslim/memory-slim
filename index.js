@@ -8,6 +8,7 @@
  *   npx memory-slim --setup            # Auto-configure (interactive)
  *   npx memory-slim --setup claude     # Auto-configure for Claude Desktop
  *   npx memory-slim --setup cursor     # Auto-configure for Cursor
+ *   npx memory-slim --setup claude-code # Auto-configure for Claude Code CLI
  */
 
 const { spawn, execSync } = require('child_process');
@@ -132,11 +133,47 @@ async function interactiveSetup() {
   }
 }
 
+function setupClaudeCode() {
+  // 환경변수 플래그 생성
+  const envFlags = REQUIRED_ENV_VARS.map(v => `--env ${v}=<YOUR_${v.split('_').pop()}>`).join(' ');
+
+  let cmd = `claude mcp add ${MCP_NAME}`;
+  if (REQUIRED_ENV_VARS.length > 0) {
+    cmd += ` ${envFlags}`;
+  }
+  cmd += ` -- npx -y ${PACKAGE_NAME}`;
+
+  console.log(`\n🔧 Adding ${MCP_NAME} to Claude Code...\n`);
+  console.log(`Running: ${cmd}\n`);
+
+  try {
+    execSync(cmd, { stdio: 'inherit', shell: true });
+    console.log(`\n🎉 Setup complete! ${MCP_NAME} is now available in Claude Code.\n`);
+    if (REQUIRED_ENV_VARS.length > 0) {
+      console.log(`⚠️  Don't forget to set environment variables:`);
+      for (const envVar of REQUIRED_ENV_VARS) {
+        console.log(`   - ${envVar}`);
+      }
+      console.log('');
+    }
+    return true;
+  } catch (err) {
+    console.error(`\n❌ Failed to add MCP. Is Claude Code CLI installed?\n`);
+    console.log(`Try running manually:\n  ${cmd}\n`);
+    return false;
+  }
+}
+
 function setupClient(client) {
+  // Claude Code CLI는 별도 처리
+  if (client === 'claude-code') {
+    return setupClaudeCode();
+  }
+
   const configPath = CONFIG_PATHS[client];
   if (!configPath) {
     console.error(`❌ Unknown client: ${client}`);
-    console.log('Supported: claude, claude-desktop, cursor');
+    console.log('Supported: claude, claude-desktop, cursor, claude-code');
     return false;
   }
 
