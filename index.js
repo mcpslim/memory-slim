@@ -117,15 +117,15 @@ async function interactiveSetup() {
     case '3':
       console.log('\nRun this command:\n');
       if (REQUIRED_ENV_VARS.length > 0) {
-        console.log(`  claude mcp add ${MCP_NAME} -s project ${envFlags} -- npx -y ${PACKAGE_NAME}\n`);
+        console.log(`  claude mcp add ${MCP_NAME} -s project ${envFlags} -- npx -y ${PACKAGE_NAME}@latest\n`);
       } else {
-        console.log(`  claude mcp add ${MCP_NAME} -s project -- npx -y ${PACKAGE_NAME}\n`);
+        console.log(`  claude mcp add ${MCP_NAME} -s project -- npx -y ${PACKAGE_NAME}@latest\n`);
       }
       console.log('  (Windows: use "cmd /c npx" instead of "npx")\n');
       return true;
     case '4':
       console.log('\nRun this command:\n');
-      console.log(`  code --add-mcp '{"name":"${MCP_NAME}","command":"npx","args":["-y","${PACKAGE_NAME}"]${envJson}}'\n`);
+      console.log(`  code --add-mcp '{"name":"${MCP_NAME}","command":"npx","args":["-y","${PACKAGE_NAME}@latest"]${envJson}}'\n`);
       return true;
     case '5':
     default:
@@ -145,7 +145,7 @@ function setupClaudeCode() {
   if (REQUIRED_ENV_VARS.length > 0) {
     cmd += ` ${envFlags}`;
   }
-  cmd += ` -- ${npxCmd} -y ${PACKAGE_NAME}`;
+  cmd += ` -- ${npxCmd} -y ${PACKAGE_NAME}@latest`;
 
   console.log(`\n🔧 Adding ${MCP_NAME} to Claude Code...\n`);
   console.log(`Running: ${cmd}\n`);
@@ -183,7 +183,7 @@ function setupClient(client) {
 
   const mcpConfig = {
     command: 'npx',
-    args: ['-y', PACKAGE_NAME]
+    args: ['-y', PACKAGE_NAME + '@latest']
   };
 
   // 환경변수가 필요한 경우 env 블록 추가 (플레이스홀더)
