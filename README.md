@@ -56,13 +56,13 @@ Done! Restart your app to use memory.
 
 ```bash
 # Claude Code (creates .mcp.json in project root)
-claude mcp add memory -s project -- npx -y memory-slim
+claude mcp add memory -s project -- npx -y memory-slim@latest
 
 # Windows: use cmd /c wrapper
-claude mcp add memory -s project -- cmd /c npx -y memory-slim
+claude mcp add memory -s project -- cmd /c npx -y memory-slim@latest
 
 # VS Code (Copilot, Cline, Roo Code)
-code --add-mcp '{"name":"memory","command":"npx","args":["-y","memory-slim"]}'
+code --add-mcp '{"name":"memory","command":"npx","args":["-y","memory-slim@latest"]}'
 ```
 
 ## Manual Setup
@@ -84,7 +84,7 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "memory": {
       "command": "npx",
-      "args": ["-y", "memory-slim"]
+      "args": ["-y", "memory-slim@latest"]
     }
   }
 }
@@ -99,7 +99,7 @@ Add to `.cursor/mcp.json` (global) or `<project>/.cursor/mcp.json` (project):
   "mcpServers": {
     "memory": {
       "command": "npx",
-      "args": ["-y", "memory-slim"]
+      "args": ["-y", "memory-slim@latest"]
     }
   }
 }
