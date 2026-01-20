@@ -1,6 +1,6 @@
 {
   "name": "memory-slim",
-  "version": "2025.11.25",
+  "version": "2025.11.25-slim.1.9",
   "description": "memory MCP (44% less tokens). Quick setup: npx memory-slim --setup",
   "bin": {
     "memory-slim": "./index.js"
