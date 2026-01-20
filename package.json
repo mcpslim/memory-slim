@@ -24,8 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/palan-k/mcpslim.git",
-    "directory": "packages/memory-slim"
+    "url": "https://github.com/mcpslim/memory-slim.git"
   },
   "mcpslim": {
     "originalPackage": "@modelcontextprotocol/server-memory",
@@ -33,5 +32,9 @@
     "originalTools": 9,
     "slimTools": 5,
     "tokenReduction": "44%"
+  },
+  "homepage": "https://mcpslim.github.io/memory-slim",
+  "bugs": {
+    "url": "https://github.com/mcpslim/memory-slim/issues"
   }
 }
